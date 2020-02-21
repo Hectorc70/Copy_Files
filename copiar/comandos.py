@@ -4,27 +4,49 @@ import subprocess
 
 
 class Consola:    
-    
-    
-    
-    def comando(self, ruta_orig, ruta_dest, parametros):
-        espacio = ' '
-        datos = ['robocopy', ruta_orig, ruta_dest]
+	
+	
+	
+	def comando(self, ruta_orig, ruta_dest, parametros):
 
-        if type(parametros) is list:
-            self.depurar_parametros(parametros, datos)
+		"Ejecuta Comandos"
 
-        elif parametros == None:
-            comando = espacio.join(datos)
-            subprocess.run(comando, shell=True)       
-        
-    def crear_log(self, ruta):
-        fecha  = datetime.now()
-        fecha_format = fecha.strftime('%d-%m-%Y_%H-%M-%S')
-        nombre_log = ruta + "\\" + "log_backup_" + fecha_format + ".txt" 
+		datos = ['robocopy', ruta_orig, ruta_dest]
+
+		if type(parametros) is list:
+			for parametro in parametros:
+				if parametro == '/LOG:':
+					param_log = self.crear_log(ruta_dest)
+					log = parametro + param_log
+					datos.append(log)
+				
+				else:
+					
+					datos.append(parametro)
+
+			comando = self.armar_comando(datos)
+			print("aaaa")
+		
+
+		elif parametros == None:
+		   comando = self.armar_comando(datos)       
+		
+	def crear_log(self, ruta):
+		"""devuelve el nombre del log con fecha y hora 
+			que fue generado"""
+
+		fecha  = datetime.now()
+		fecha_format = fecha.strftime('%d-%m-%Y_%H-%M-%S')
+		nombre_log = ruta + "\\" + "log_backup_" + fecha_format + ".txt" 
+
+		return nombre_log
 
 
-    def depurar_parametros(self, parametros, lista):
-            
-            for parametro in parametros:
-                lista.append(str(parametro))
+	def armar_comando(self, datos):
+		"""devuelve el string del comando"""
+
+		separador = ' '
+		comando = separador.join(datos)
+
+		return comando
+		

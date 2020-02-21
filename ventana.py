@@ -34,11 +34,18 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
     def parametros(self):
 
-        if self.copiar_subdirectorios.isChecked() == True:
-            return("/E")
+        parametros = list()
+
+        if self.copiar_subdirectorios.isChecked():
+            parametros.append("/E")
         
-        else:
-            return ''
+        if self.crear_log.isChecked():
+            parametros.append("/LOG:")
+        
+        hilos_trabajo = '/MT:' + str(self.numero_hilos.value())
+        parametros.append(hilos_trabajo)
+        
+        return parametros
 
    
 
