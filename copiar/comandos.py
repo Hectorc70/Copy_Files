@@ -1,6 +1,8 @@
 from datetime import date
 from datetime import datetime
 import subprocess
+from os import makedirs
+import os.path as path 
 
 
 class Consola:    
@@ -10,6 +12,13 @@ class Consola:
 	def comando(self, ruta_orig, ruta_dest, parametros):
 
 		"Ejecuta Comandos"
+
+		if path.exists(ruta_dest):
+			pass
+			
+		else:
+			makedirs(ruta_dest, exist_ok=True)
+			
 
 		datos = ['robocopy', ruta_orig, ruta_dest]
 
