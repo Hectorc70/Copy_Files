@@ -25,11 +25,17 @@ class Consola:
 					datos.append(parametro)
 
 			comando = self.armar_comando(datos)
-			print("aaaa")
+			self.ejecutar_comando(comando)
+			print("COPIADO")
+			
 		
 
 		elif parametros == None:
-		   comando = self.armar_comando(datos)       
+		   comando = self.armar_comando(datos)
+		   
+		   self.ejecutar_comando(comando) 
+		   print("COPIADO")
+		         
 		
 	def crear_log(self, ruta):
 		"""devuelve el nombre del log con fecha y hora 
@@ -49,4 +55,8 @@ class Consola:
 		comando = separador.join(datos)
 
 		return comando
+	
+	def ejecutar_comando(self, comando):
+
+		subprocess.run(comando, shell=True)
 		
