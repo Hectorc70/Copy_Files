@@ -13,6 +13,7 @@ class Consola:
 
 		"Ejecuta Comandos"
 
+<<<<<<< HEAD
 		if path.exists(ruta_dest):
 			pass
 			
@@ -20,6 +21,8 @@ class Consola:
 			makedirs(ruta_dest, exist_ok=True)
 			
 
+=======
+>>>>>>> developer
 		datos = ['robocopy', ruta_orig, ruta_dest]
 
 		if type(parametros) is list:
@@ -34,6 +37,7 @@ class Consola:
 					datos.append(parametro)
 
 			comando = self.armar_comando(datos)
+<<<<<<< HEAD
 			self.ejecutar_comando(comando)
 			print("COPIADO")
 			
@@ -45,6 +49,13 @@ class Consola:
 		   self.ejecutar_comando(comando) 
 		   print("COPIADO")
 		         
+=======
+			print("aaaa")
+		
+
+		elif parametros == None:
+		   comando = self.armar_comando(datos)       
+>>>>>>> developer
 		
 	def crear_log(self, ruta):
 		"""devuelve el nombre del log con fecha y hora 
@@ -64,8 +75,11 @@ class Consola:
 		comando = separador.join(datos)
 
 		return comando
+<<<<<<< HEAD
 	
 	def ejecutar_comando(self, comando):
 
 		subprocess.run(comando, shell=True)
+=======
+>>>>>>> developer
 		
