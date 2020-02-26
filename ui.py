@@ -32,7 +32,8 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.boton_start = QtWidgets.QPushButton(self.centralwidget)
         self.boton_start.setGeometry(QtCore.QRect(270, 220, 151, 41))
-        self.boton_start.setStyleSheet("background-color: rgb(239, 255, 252);\n""")
+        self.boton_start.setStyleSheet("background-color: rgb(239, 255, 252);\n"
+"")
         self.boton_start.setObjectName("boton_start")
         self.opciones = QtWidgets.QGroupBox(self.centralwidget)
         self.opciones.setGeometry(QtCore.QRect(10, 120, 151, 181))
@@ -46,7 +47,7 @@ class Ui_MainWindow(object):
         self.copiar_subdirectorios.setTristate(False)
         self.copiar_subdirectorios.setObjectName("copiar_subdirectorios")
         self.crear_log = QtWidgets.QCheckBox(self.opciones)
-        self.crear_log.setGeometry(QtCore.QRect(10, 80, 70, 17))
+        self.crear_log.setGeometry(QtCore.QRect(10, 80, 131, 17))
         self.crear_log.setObjectName("crear_log")
         self.text_hilos_trabajo = QtWidgets.QLabel(self.opciones)
         self.text_hilos_trabajo.setGeometry(QtCore.QRect(10, 20, 81, 21))
