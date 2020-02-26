@@ -13,7 +13,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def ejecutar(self):       
         
-        self.boton_start.clicked.connect(self.rutas)     
+        self.boton_start.clicked.connect(self.opciones_ventana)     
 
         
            
@@ -22,7 +22,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
         
 
-    def rutas(self):
+    def opciones_ventana(self):
         ruta_1 = self.ruta_origen.text()
         ruta_2 = self.ruta_destino.text()
         parametros = self.parametros()
@@ -36,14 +36,24 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         parametros = list()
 
+       
+        if self.copiar.isChecked():
+            pass
         if self.copiar_subdirectorios.isChecked():
             parametros.append("/E")
         
         if self.crear_log.isChecked():
             parametros.append("/LOG:")
         
+        if self.mover.isChecked(): 
+            parametros.append("/MOVE")
+           
+        
         hilos_trabajo = '/MT:' + str(self.numero_hilos.value())
+        info_detall = '/V'
+
         parametros.append(hilos_trabajo)
+        parametros.append(info_detall)
         
         return parametros
 
