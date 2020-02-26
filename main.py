@@ -36,14 +36,24 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         parametros = list()
 
+       
+        if self.copiar.clicked:
+            pass
         if self.copiar_subdirectorios.isChecked():
             parametros.append("/E")
         
         if self.crear_log.isChecked():
             parametros.append("/LOG:")
         
+        if self.mover.isChecked(): 
+            parametros.append("/MOVE")
+           
+        
         hilos_trabajo = '/MT:' + str(self.numero_hilos.value())
+        info_detall = '/V'
+
         parametros.append(hilos_trabajo)
+        parametros.append(info_detall)
         
         return parametros
 
